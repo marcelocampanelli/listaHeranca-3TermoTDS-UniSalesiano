@@ -55,12 +55,13 @@ int main(){
       cout<<valor<<" INSERIDOS NA CONTA: "<<Usuario.getNumeroConta()<<endl;
       Usuario.Depositar(valor);
       saldoTotal = Usuario.SaldoTotal();
-      cout<<"PRESSIONE QUALQUER TECLA PARA CONTINUAR....."<<endl;
+      cout<<"\n\nPRESSIONE QUALQUER TECLA PARA CONTINUAR....."<<endl;
       getchar();
 
     }else if(op == 2){
       cout<<"INSIRA O VALOR QUE DESEJA RETIRAR: ";
       cin>>valor;
+       __fpurge(stdin);
       if (valor <= Usuario.getSaldo()){
         Usuario.Retirar(valor);
         saldoTotal = Usuario.SaldoTotal();
@@ -68,6 +69,11 @@ int main(){
         Usuario.DebitoTotal(valor);
         Usuario.Retirar(valor);
         saldoTotal = Usuario.SaldoTotal();
+      }else if( valor > Usuario.SaldoTotal()){
+        cout<<"\n\nVALOR INDISPONIVEL NO MOMENTO."<<endl;
+        cout<<"\nPRESSIONE QUALQUER TECLA PARA CONTINUAR....."<<endl;
+        getchar();
+        __fpurge(stdin);
       }
       
       __fpurge(stdin);
@@ -75,8 +81,8 @@ int main(){
 
     
     } else if(op == 3){
-      cout<<"SEU SALDO NO MOMENTO E DE: R$"<<Usuario.getSaldo()<<endl;
-      cout<<"PRESSIONE QUALQUER TECLA PARA CONTINUAR....."<<endl;
+      cout<<"\n\nSEU SALDO NO MOMENTO E DE: R$"<<Usuario.getSaldo()<<endl;
+      cout<<"\n\nPRESSIONE QUALQUER TECLA PARA CONTINUAR....."<<endl;
       getchar();
     }
 
